@@ -11,7 +11,9 @@ Exercises
 # Import all the libraries used in this program
 
 from random import choice
-from turtle import *
+from turtle import Turtle, bgcolor, clear, up, goto
+from turtle import dot, update, ontimer, setup, hideturtle
+from turtle import tracer, listen, onkey, done
 
 from freegames import floor, vector
 
@@ -61,6 +63,7 @@ tiles = [
 
 # Mark the limits of the scenery
 
+
 def square(x, y):
     """Draw square using path at (x, y)."""
     path.up()
@@ -101,6 +104,7 @@ def valid(point):
     return point.x % 20 == 0 or point.y % 20 == 0
 
 # Design a function that draws the world
+
 
 def world():
     """Draw world using path."""
@@ -174,6 +178,7 @@ def move():
     ontimer(move, 100)
 
 # Create a functions that changes the direction of movement for pacman
+
 
 def change(x, y):
     """Change pacman aim if valid."""

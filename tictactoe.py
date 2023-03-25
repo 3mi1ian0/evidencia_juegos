@@ -13,20 +13,20 @@ Tic Tac Toe
 
 """
 
-#Libraries
+# Libraries
 from turtle import hideturtle, up, goto, down, circle, update, setup
 from turtle import tracer, onscreenclick, done, color, pensize
 
 from freegames import line
 
-#Size correction
+# Size correction
 SIZE = 100
-diff = 130 - SIZE # Difference between grid and icon size
+diff = 130 - SIZE  # Difference between grid and icon size
 
-board = [False for i in range(9)] #Detect if the checkbox is already used
+board = [False for i in range(9)]  # Detect if the checkbox is already used
 
 
-def grid():#Define the grid
+def grid():  # Define the grid
     """Draw tic-tac-toe grid."""
     line(-67, 200, -67, -200)
     line(67, 200, 67, -200)
@@ -34,7 +34,7 @@ def grid():#Define the grid
     line(-200, 67, 200, 67)
 
 
-def drawx(x, y):#Draw the x
+def drawx(x, y):  # Draw the x
     """Draw X player."""
     pensize(10)
     color('red')
@@ -42,7 +42,7 @@ def drawx(x, y):#Draw the x
     line(x + diff, y + diff, x + SIZE, y + SIZE)
 
 
-def drawo(x, y):#Draw the o
+def drawo(x, y):  # Draw the o
     """Draw O player."""
     up()
     pensize(10)
@@ -58,15 +58,15 @@ def floor(value):
 
 
 state = {'player': 0}
-players = [drawx, drawo]# Definition of players
+players = [drawx, drawo]  # Definition of players
 
 
-def tap(x, y): #User click location
+def tap(x, y):  # User click location
     """Draw X or O in tapped square."""
     x = floor(x)
     y = floor(y)
 
-    #Index of the square pressed
+    # Index of the square pressed
     box_index = int((x+200)//133+(abs(y-66))//133*3)
 
     # Check if the box is occupied
@@ -79,11 +79,11 @@ def tap(x, y): #User click location
         state['player'] = not player
 
 
-setup(420, 420, 370, 0) #Create the window
+setup(420, 420, 370, 0)  # Create the window
 hideturtle()
 tracer(False)
-#Makes the grid
+# Makes the grid
 grid()
 update()
-onscreenclick(tap) #Detect the clicks
+onscreenclick(tap)  # Detect the clicks
 done()

@@ -7,6 +7,8 @@ from freegames import line
 SIZE = 100
 diff = 130 - SIZE
 
+board = [False for i in range(9)]
+
 
 def grid():
     """Draw tic-tac-toe grid."""
@@ -47,11 +49,16 @@ def tap(x, y):
     """Draw X or O in tapped square."""
     x = floor(x)
     y = floor(y)
-    player = state['player']
-    draw = players[player]
-    draw(x, y)
-    update()
-    state['player'] = not player
+
+    ind = int((x+200)//133+(abs(y-66))//133*3)
+
+    if not board[ind]:
+        board[ind] = True
+        player = state['player']
+        draw = players[player]
+        draw(x, y)
+        update()
+        state['player'] = not player
 
 
 setup(420, 420, 370, 0)

@@ -8,16 +8,22 @@ Exercises
 4. Make the ghosts faster/slower.
 5. Make the ghosts smarter.
 """
+# Import all the libraries used in this program
 
 from random import choice
 from turtle import *
 
 from freegames import floor, vector
 
+# Declare all the variables in order to create the scenery
+
 state = {'score': 0}
 path = Turtle(visible=False)
 writer = Turtle(visible=False)
 aim = vector(5, 0)
+
+# Design the form of pacman and the ghosts
+
 pacman = vector(-40, -80)
 ghosts = [
     [vector(-180, 160), vector(5, 0)],
@@ -26,6 +32,9 @@ ghosts = [
     [vector(100, -160), vector(-5, 0)],
 ]
 # fmt: off
+
+# Design where is the position of the  coins
+
 tiles = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
@@ -50,6 +59,7 @@ tiles = [
 ]
 # fmt: on
 
+# Mark the limits of the scenery
 
 def square(x, y):
     """Draw square using path at (x, y)."""
@@ -64,6 +74,9 @@ def square(x, y):
 
     path.end_fill()
 
+
+# Design these 2 functions in order to create a record of how many
+# coins you recollect in a game
 
 def offset(point):
     """Return offset of point in tiles."""
@@ -87,6 +100,7 @@ def valid(point):
 
     return point.x % 20 == 0 or point.y % 20 == 0
 
+# Design a function that draws the world
 
 def world():
     """Draw world using path."""
@@ -106,6 +120,9 @@ def world():
                 path.goto(x + 10, y + 10)
                 path.dot(2, 'white')
 
+
+# Create a function that designs the movement and speed of pacman
+# and the ghosts
 
 def move():
     """Move pacman and all ghosts."""
@@ -156,6 +173,7 @@ def move():
 
     ontimer(move, 100)
 
+# Create a functions that changes the direction of movement for pacman
 
 def change(x, y):
     """Change pacman aim if valid."""
@@ -163,6 +181,8 @@ def change(x, y):
         aim.x = x
         aim.y = y
 
+
+# Use previous functions to create and run the game
 
 setup(420, 420, 370, 0)
 hideturtle()

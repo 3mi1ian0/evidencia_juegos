@@ -1,5 +1,11 @@
-from turtle import *
+from turtle import hideturtle, up, goto, down, circle, update, setup
+from turtle import tracer, onscreenclick, done, color, pensize
+
 from freegames import line
+
+
+SIZE = 100
+diff = 130 - SIZE
 
 
 def grid():
@@ -12,16 +18,20 @@ def grid():
 
 def drawx(x, y):
     """Draw X player."""
-    line(x, y, x + 133, y + 133)
-    line(x, y + 133, x + 133, y)
+    pensize(10)
+    color('red')
+    line(x+diff, y + SIZE, x + SIZE, y+diff)
+    line(x+diff, y+diff, x + SIZE, y + SIZE)
 
 
 def drawo(x, y):
     """Draw O player."""
     up()
-    goto(x + 67, y + 5)
+    pensize(10)
+    color('blue')
+    goto(x + 67, y + diff//2)
     down()
-    circle(62)
+    circle(SIZE//2)
 
 
 def floor(value):
@@ -33,7 +43,6 @@ state = {'player': 0}
 players = [drawx, drawo]
 
 
-
 def tap(x, y):
     """Draw X or O in tapped square."""
     x = floor(x)
@@ -43,7 +52,6 @@ def tap(x, y):
     draw(x, y)
     update()
     state['player'] = not player
-
 
 
 setup(420, 420, 370, 0)
